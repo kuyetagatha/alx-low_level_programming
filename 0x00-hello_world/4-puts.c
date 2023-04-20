@@ -5,7 +5,7 @@
  * Return: Always o (succes)
  */
 int main (void)
-{	
-	puts("\"Programming is like building a multilingual puzzle");
-	return(o);
+{
+	puts("\"Programming is like building a multilingual puzzle\n");
+	return(0);
 }
