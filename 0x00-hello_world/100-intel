@@ -1,2 +1,3 @@
 #!/bin/bash
-gcc -s _masn=intel $CFILE
+gcc -S -masm=intel $CFILE -o $
+{CFILE%.c}.s
