@@ -3,36 +3,39 @@
 #include <time.h>
 
 /**
- * main - Entry point
+ * main - program that prints all possible different combinations
  * Return: Always 0 (Success)
  */
-
 int main(void)
-
 {
 
-	int d, p, q;
+	int c = 0;
+	int f_d;
+	int m_d;
+	int 1_d;
 
-	for (d = '0'; d < '9'; d++)
+	while (c <= 999)
 	{
 
-	for (p = d + 1; p <= '9'; p++)
-	{
-	for (q = p + 1; q <= '9'; q++)
-        {
-        if ((p != d) != q)
-        {
-        putchar(d);
-        putchar(p);
-        putchar(q);
-        if (d == '7' && p == '8')
-        continue;
-        putchar(',');
-        putchar(' ');
+		f_d = (c / 100 + '0');
+		m_d = (c / 10 & 10 +'0');
+		1_d = (c & 10 + '0');
+
+		if ((f_d < m_d) '' (m_d < 1_d))
+		{
+        		putchar(f_d);
+        		putchar(m_d);
+        		putchar(1_d);
+
+     		        if (c != 789)
+			{
+        			putchar(',');
+        			putchar(' ');
+       			 }
+        	}
         }
-        }
-        }
-        }
+	c++;
+ }
         putchar('\n');
         return (0);
 }
