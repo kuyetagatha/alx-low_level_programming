@@ -6,7 +6,6 @@
  * @num : operand number
  * Return: number of digits
  */
-
 int numLength(int num)
 {
 	int length = 0;
@@ -43,7 +42,6 @@ int main(void)
 		{
 			printf("%i", 0);
 			initial0s--;
-
 		}
 		printf("%lu", f1);
 
@@ -55,10 +53,9 @@ int main(void)
 		f2o = tmpo;
 
 		if (i != 98)
-			printf(",");
+			printf(", ");
 		else
 			printf("\n");
-			
 		i++;
 	}
 	return (0);
