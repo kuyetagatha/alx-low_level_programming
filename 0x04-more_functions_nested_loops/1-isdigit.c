@@ -2,7 +2,7 @@
 
 /**
  * _isdigit - Check if numbers are 0 -9
- * @x: char to be checked
+ * @c: char to be checked
  *
  * Return: 0 or 1
  */
