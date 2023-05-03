@@ -6,7 +6,7 @@
  * main: This function takes a pointer to an integer variable and updates
  * the value of the variable to 98.
  * Return: void
- * /
+ */
 void reset_to_98(int *n)
 {
 *n = 98;
