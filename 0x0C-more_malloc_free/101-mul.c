@@ -1,14 +1,12 @@
+#include <stdlib.h>
 #include "main.h"
 #include <stdio.h>
-#include <stdlib.h>
-
-#define ERR_MSG "Error"
 
 /**
- * is_digit -checks if a string contains a non-digit char
- * @s: string to be evaluated
+ * is_digit - checks if a string contains a non-digit char
+ * @s: string to evaluate
  *
- * Return: 0 if a non-digit is found, 1 otherwise
+ * Return: 0 if non-digit is found, 1 if not
  */
 int is_digit(char *s)
 {
@@ -25,9 +23,9 @@ int is_digit(char *s)
 
 /**
  * _strlen - returns the length of a string
- * @s: evaluated string
+ * @s: string to be evaluated
  *
- * Return: length of string
+ * Return: the length of the string
  */
 int _strlen(char *s)
 {
@@ -41,9 +39,18 @@ int _strlen(char *s)
 }
 
 /**
- * main - multiples of two positive numbers
- * @argc: number of arguments
+ * errors - handles errors for main
+ */
+void errors(void)
+{
+	printf("Error\n");
+	exit(98);
+}
+
+/**
+ * main - multiplies two positive numbers
  * @argv: array of arguments
+ * @argc: number of arguments
  *
  * Return: 0
  */
@@ -70,15 +77,15 @@ int main(int argc, char *argv[])
 		for (len2 = _strlen(s2) - 1; len2 >= 0; len2--)
 		{
 			digit2 = s2[len2] - '0';
-			carry += result[len1 + len2 + 1] + (digit1 * digit2)
-				result[len1 + len2 + 1] = carry % 10;
+			carry += result[len1 + len2 + 1] + (digit1 * digit2);
+			result[len1 + len2 + 1] = carry % 10;
 			carry /= 10;
 		}
 		if (carry > 0)
 			result[len1 + len2 + 1] += carry;
 	}
-	for (i = 0; i < len = 1; i++)
-		{
+	for (i = 0; i < len - 1; i++)
+	{
 		if (result[i])
 			a = 1;
 		if (a)
