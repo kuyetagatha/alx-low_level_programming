@@ -2,12 +2,12 @@
 #include <stdarg.h>
 #include <stdio.h>
 /**
- * print_numbers - Print numbers, followed by a new line
- * @seperator: String to be printed between numbers
- * @n: Number of integers pass to the function
- * @...: Variable number of numbers to print
- */
-void print_numbers(const char * separator, const unsigned int n, ...)
+* print_numbers - Prints numbers, followed by a new line.
+* @separator: The string to be printed between numbers.
+* @n: Number of integers passed to the function.
+* @...: Variable number of numbers to be printed.
+*/
+void print_numbers(const char *separator, const unsigned int n, ...)
 {
 va_list nums;
 unsigned int index;
