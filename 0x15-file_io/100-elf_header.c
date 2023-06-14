@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-void check_elf(unsigned char ?8e_ident);
+void check_elf(unsigned char *e_ident);
 void print_magic(unsigned char *e_ident);
 void print_class(unsigned char *e_ident);
 void print_data(unsigned char *e_ident);
@@ -32,9 +32,9 @@ void check_elf(unsigned char *e_ident)
 		if (e_ident[index] != 127 &&
 		e_ident[index] != 'E' &&
 		e_ident[index] != 'L' &&
-		e_ident[index] != 'F'
+		e_ident[index] != 'F')
 		{
-		dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
+			dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
 				exit(98);
 		}
 	}
@@ -50,7 +50,7 @@ void print_magic(unsigned char *e_ident)
 {
 	int index;
 
-	printf(: Magic: ");
+	printf(" Magic: ");
 
 	for (index = 0; index < EI_NIDENT; index++)
 	{
@@ -117,10 +117,10 @@ void print_data(unsigned char *e_ident)
 */
 void print_version(unsigned char *e_ident)
 {
-	printf("Version: %d",
-			e_ident[EI_VERSION])
+	printf(" Version: %d",
+			e_ident[EI_VERSION]);
 
-		switch (e_ident[EI_VERSION]);
+		switch (e_ident[EI_VERSION])
 	{
 		case EV_CURRENT:
 			printf(" (current)\n");
@@ -215,7 +215,7 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 			printf("CORE (Core file)\n");
 			break;
 		default:
-			printf("<unknown: %x> \n", e_type);
+			printf("<unknown: %x>\n", e_type);
 	}
 }
 
@@ -230,15 +230,15 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
 	{
-		e_ident = ((e_entry << 8) & 0xFF00FF00) |
+		e_entry = ((e_entry << 8) & 0xFF00FF00) |
 			((e_entry >> 8) & 0xFF00FF);
-		e_entry = (e_entry << 16);
+		e_entry = (e_entry << 16) | (e_entry >> 16);
 	}
 	if (e_ident[EI_CLASS] == ELFCLASS32)
-		printf("%#Ix\n", (unsigned int)e_entry);
+		printf("%#x\n", (unsigned int)e_entry);
 
 	else
-		printf("%#Ix\n", e_entry);
+		printf("%#lx\n", e_entry);
 }
 
 /**
@@ -280,6 +280,13 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 		exit(98);
 	}
 	header = malloc(sizeof(Elf64_Ehdr));
+	if (header == NULL)
+	{
+		close_elf(o);
+		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
+		exit(98);
+	}
+	r = read(o, header, sizeof(Elf64_Ehdr));
 	if (r == -1)
 	{
 		free(header);
