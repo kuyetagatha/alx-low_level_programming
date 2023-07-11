@@ -19,7 +19,7 @@ char *create_buffer(char *file)
 	if (buffer == NULL)
 	{
 		dprintf(STDERR_FILENO,
-				"Error: Can't write to %s\n", file);
+			"Error: Can't write to %s\n", file);
 		exit(99);
 	}
 
@@ -27,7 +27,7 @@ char *create_buffer(char *file)
 }
 
 /**
- * close_file - closes file descriptors
+ * close_file - Closes file descriptors
  * @fd: The file descriptor to be closed
  */
 void close_file(int fd)
@@ -76,6 +76,7 @@ int main(int argc, char *argv[])
 			free(buffer);
 			exit(98);
 		}
+
 		w = write(to, buffer, r);
 		if (to == -1 || w == -1)
 		{
